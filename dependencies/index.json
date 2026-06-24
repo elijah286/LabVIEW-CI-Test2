@@ -1,8 +1,15 @@
 {
   "schema": 1,
   "repo": "elijah286/LabVIEW-CI-Test2",
-  "sha": "48c3a88bff5e1a204ac2bcc4416197431ea03acc",
+  "sha": "a8238baf7074a5713fd2d10a937ac54ce5aab0a6",
   "revisions": [
+    {
+      "sha": "a8238baf7074a5713fd2d10a937ac54ce5aab0a6",
+      "short": "a8238ba",
+      "message": "Add LabVIEW CI pipeline",
+      "author": "Elijah Kerry",
+      "date": "2026-06-24T20:15:54Z"
+    },
     {
       "sha": "48c3a88bff5e1a204ac2bcc4416197431ea03acc",
       "short": "48c3a88",
@@ -125,8 +132,8 @@
       "details": "Batch runner compiled from repo Go source; Linux uses the toimages GHCR image and Windows builds runner.exe in the workflow.",
       "platforms": {
         "windows": {
-          "present": false,
-          "label": ""
+          "present": true,
+          "label": "workflow-built"
         },
         "linux": {
           "present": true,
@@ -141,8 +148,8 @@
       "details": "Renderer used by VI Browser 2.0 to drive LabVIEW and emit position-aware frame JSON.",
       "platforms": {
         "windows": {
-          "present": false,
-          "label": ""
+          "present": true,
+          "label": "workflow-built"
         },
         "linux": {
           "present": true,
