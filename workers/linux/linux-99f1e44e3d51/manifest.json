@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "platform": "linux",
   "version": "linux-99f1e44e3d51",
   "labview_version": "2026",
@@ -10,10 +10,12 @@
   "worker_layer": "",
   "copied_from_base": false,
   "image_ref": "ghcr.io/elijah286/labview-ci-test2-labview:linux-99f1e44e3d51",
-  "build_date": "2026-07-01T05:35:10Z",
-  "git_sha": "a8238baf7074a5713fd2d10a937ac54ce5aab0a6",
-  "run_url": "https://github.com/elijah286/LabVIEW-CI-Test2/actions/runs/28495979612",
+  "build_date": "2026-07-08T17:49:44Z",
+  "git_sha": "3e600c929b90c1622c8a384a9b4cbf7ab11a5c7c",
+  "run_url": "https://github.com/elijah286/LabVIEW-CI-Test2/actions/runs/28963843869",
   "vipc": [],
+  "vipm_raw": "",
+  "vipm_packages": [],
   "nipkg_raw": "",
   "nipkg_packages": []
 }
