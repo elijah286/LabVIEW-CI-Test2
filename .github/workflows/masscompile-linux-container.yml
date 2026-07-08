@@ -1,5 +1,5 @@
 name: Mass Compile — Linux Container
-run-name: Mass Compile Linux container - ${{ github.event_name == 'workflow_dispatch' && 'manual run' || github.event.pull_request.head.sha || github.sha }}
+run-name: Mass Compile Linux container - ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit_sha || github.event.pull_request.head.sha || github.sha }}
 
 # Linux counterpart of the Windows mass compile. Produces the same friendly,
 # navigable report (problems grouped by VI, snapshot drawer, dashboard nav) for
@@ -40,9 +40,10 @@ permissions:
   pages: write
   statuses: write
   packages: read
+  actions: read   # so wait-for-worker-image.sh can read the worker-image build runs
 
-# No shared concurrency group: this mirrors run-vi-analyzer-linux-container.yml,
-# which deploys to gh-pages directly with no group. The Windows report workflows
+# No shared concurrency group: this Linux report deploys to gh-pages directly
+# with no group. The Windows report workflows
 # share `report-pages-deploy` (cancel-in-progress:false) to serialize their pushes,
 # but GitHub keeps only one *pending* run per group — so adding a third member
 # would make a normal push cancel one of the three. The Linux job writes to a
@@ -87,7 +88,7 @@ jobs:
         if: github.event.inputs.commit_sha != ''
         run: |
           git fetch --no-tags origin "${{ github.event.repository.default_branch }}"
-          git checkout FETCH_HEAD -- .github/labview .github/workflows
+          git checkout FETCH_HEAD -- .github/labview .github/workflows .github/actions/publish-gh-pages
 
       - name: Resolve Linux container image name
         env:
@@ -138,6 +139,14 @@ jobs:
             exit 0
           fi
           bash .github/labview/wait-for-worker-image.sh "${{ steps.sha.outputs.sha }}" "${{ github.event.before }}" "$LINUX_WORKER_WORKFLOW"
+
+      - name: Log in to GHCR
+        if: env.LABVIEW_CONTAINER_IMAGE != 'nationalinstruments/labview:latest-linux'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull LabVIEW Linux container
         id: pull
