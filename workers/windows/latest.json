@@ -1,7 +1,7 @@
 {
-  "version": "win-b12432cb83b5",
+  "version": "win-64491b76cdee",
   "platform": "windows",
-  "manifest_url": "https://elijah286.github.io/LabVIEW-CI-Test2/workers/windows/win-b12432cb83b5/manifest.html",
-  "build_date": "2026-07-08T17:49:48Z",
+  "manifest_url": "https://elijah286.github.io/LabVIEW-CI-Test2/workers/windows/win-64491b76cdee/manifest.html",
+  "build_date": "2026-08-01T05:30:04Z",
   "git_sha": "3e600c929b90c1622c8a384a9b4cbf7ab11a5c7c"
 }
